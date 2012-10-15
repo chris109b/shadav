@@ -70,7 +70,7 @@ class DavApplication(tornado.web.Application):
 def run_server(conf_root=''):       
     '''Add webdav status codes'''
     httplib.responses[207] = 'Multiple Status'
-    httplib.repsonses[422] = 'Unprocessable Entity'
+    httplib.responses[422] = 'Unprocessable Entity'
     httplib.responses[423] = 'Locked'
     httplib.responses[424] = 'Failed Dependency'
 
