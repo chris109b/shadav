@@ -18,6 +18,7 @@
 import os
 import ssl
 
+import httplib
 import tornado.web
 import tornado.httpserver
 import tornado.ioloop
@@ -67,6 +68,12 @@ class DavApplication(tornado.web.Application):
 
 
 def run_server(conf_root=''):       
+    '''Add webdav status codes'''
+    httplib.responses[207] = 'Multiple Status'
+    httplib.repsonses[422] = 'Unprocessable Entity'
+    httplib.responses[423] = 'Locked'
+    httplib.responses[424] = 'Failed Dependency'
+
     conf_file = os.path.abspath(
                 os.path.join (conf_root, CONFIG_FILE))
     if os.path.exists(conf_file):            
