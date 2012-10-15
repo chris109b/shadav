@@ -1,0 +1,542 @@
+Version string: neon 0.29.6: Library build, IPv6, Expat 2.0.1, zlib 1.2.5, GNU TLS 2.12.14.
+******* Running test 0: init ********
+Version string: neon 0.29.6: Library build, IPv6, Expat 2.0.1, zlib 1.2.5, GNU TLS 2.12.14.
+******* Running test 0: init ********
+******* Running test 1: begin ********
+HTTP session to http://hank:8080 begins.
+HTTP session to http://hank:8080 begins.
+Running pre_send hooks
+Sending request headers:
+DELETE /litmus/ HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Keep-Alive: 
+Connection: TE, Keep-Alive
+TE: trailers
+Host: hank:8080
+X-Litmus: basic: 1 (begin)
+
+Sending request-line and headers:
+Doing DNS lookup on hank...
+req: Connecting to 192.168.1.107:8080
+Request sent; retry is 0.
+[status-line] < HTTP/1.1 404 Not Found
+[hdr] Content-Length: 69
+Header Name: [content-length], Value: [69]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Reading 69 bytes of response body.
+Got 69 bytes.
+Read block (69 bytes):
+[<html><title>404: Not Found</title><body>404: Not Found</body></html>]
+Running post_send hooks
+Request ends, status 404 class 4xx, error line:
+404 Not Found
+Running destroy hooks.
+Request ends.
+Running pre_send hooks
+Sending request headers:
+MKCOL /litmus/ HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+X-Litmus: basic: 1 (begin)
+
+Sending request-line and headers:
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 201 Created
+[hdr] Content-Length: 0
+Header Name: [content-length], Value: [0]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Running post_send hooks
+Request ends, status 201 class 2xx, error line:
+201 Created
+Running destroy hooks.
+Request ends.
+******* Running test 2: options ********
+Running pre_send hooks
+Sending request headers:
+OPTIONS /litmus/ HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+X-Litmus: basic: 2 (options)
+
+Sending request-line and headers:
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 200 OK
+[hdr] Dav: 1,2
+Header Name: [dav], Value: [1,2]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Content-Length: 0
+Header Name: [content-length], Value: [0]
+[hdr] Allow: HEAD,GET,POST,OPTIONS,PUT,DELETE,MKCOL,PROPFIND,PROPPATCH,MOVE,COPY,LOCK,UNLOCK
+Header Name: [allow], Value: [HEAD,GET,POST,OPTIONS,PUT,DELETE,MKCOL,PROPFIND,PROPPATCH,MOVE,COPY,LOCK,UNLOCK]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Running post_send hooks
+Request ends, status 200 class 2xx, error line:
+200 OK
+Running destroy hooks.
+Request ends.
+******* Running test 3: put_get ********
+Running pre_send hooks
+Sending request headers:
+PUT /litmus/res HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+Content-Length: 41
+X-Litmus: basic: 3 (put_get)
+
+Sending request-line and headers:
+Sending request body:
+Body block (41 bytes):
+[This is
+a test file.
+for litmus
+testing.
+]
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 201 Created
+[hdr] Content-Length: 0
+Header Name: [content-length], Value: [0]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Running post_send hooks
+Request ends, status 201 class 2xx, error line:
+201 Created
+Running destroy hooks.
+Request ends.
+Running pre_send hooks
+Sending request headers:
+GET /litmus/res HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+X-Litmus: basic: 3 (put_get)
+
+Sending request-line and headers:
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 200 OK
+[hdr] Transfer-Encoding: chunked
+Header Name: [transfer-encoding], Value: [chunked]
+[hdr] Last-Modified: Mon, 15 Oct 2012 13:32:28 GMT
+Header Name: [last-modified], Value: [Mon, 15 Oct 2012 13:32:28 GMT]
+[hdr] Etag: "505276347e6e2a9c5506df7f5684494d9bdb094b"
+Header Name: [etag], Value: ["505276347e6e2a9c5506df7f5684494d9bdb094b"]
+[hdr] Content-Type: application/unknown
+Header Name: [content-type], Value: [application/unknown]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+[chunk] < 29
+Got chunk size: 41
+Reading 41 bytes of response body.
+Got 41 bytes.
+Read block (41 bytes):
+[This is
+a test file.
+for litmus
+testing.
+]
+[chunk] < 0
+Got chunk size: 0
+[hdr] 
+End of headers.
+Running post_send hooks
+Running destroy hooks.
+Request ends.
+******* Running test 4: put_get_utf8_segment ********
+Running pre_send hooks
+Sending request headers:
+PUT /litmus/res-%e2%82%ac HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+Content-Length: 41
+X-Litmus: basic: 4 (put_get_utf8_segment)
+
+Sending request-line and headers:
+Sending request body:
+Body block (41 bytes):
+[This is
+a test file.
+for litmus
+testing.
+]
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 500 Internal Server Error
+[hdr] Content-Length: 93
+Header Name: [content-length], Value: [93]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Reading 93 bytes of response body.
+Got 93 bytes.
+Read block (93 bytes):
+[<html><title>500: Internal Server Error</title><body>500: Internal Server Error</body></html>]
+Running post_send hooks
+Request ends, status 500 class 5xx, error line:
+500 Internal Server Error
+Running destroy hooks.
+Request ends.
+******* Running test 5: put_no_parent ********
+Running pre_send hooks
+Sending request headers:
+MKCOL /litmus/409me/noparent.txt/ HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+X-Litmus: basic: 5 (put_no_parent)
+
+Sending request-line and headers:
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 409 Conflict
+[hdr] Content-Length: 67
+Header Name: [content-length], Value: [67]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Reading 67 bytes of response body.
+Got 67 bytes.
+Read block (67 bytes):
+[<html><title>409: Conflict</title><body>409: Conflict</body></html>]
+Running post_send hooks
+Request ends, status 409 class 4xx, error line:
+409 Conflict
+Running destroy hooks.
+Request ends.
+******* Running test 6: mkcol_over_plain ********
+Running pre_send hooks
+Sending request headers:
+MKCOL /litmus/res/ HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+X-Litmus: basic: 6 (mkcol_over_plain)
+
+Sending request-line and headers:
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 405 Method Not Allowed
+[hdr] Content-Length: 87
+Header Name: [content-length], Value: [87]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Reading 87 bytes of response body.
+Got 87 bytes.
+Read block (87 bytes):
+[<html><title>405: Method Not Allowed</title><body>405: Method Not Allowed</body></html>]
+Running post_send hooks
+Request ends, status 405 class 4xx, error line:
+405 Method Not Allowed
+Running destroy hooks.
+Request ends.
+******* Running test 7: delete ********
+Running pre_send hooks
+Sending request headers:
+DELETE /litmus/res HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+X-Litmus: basic: 7 (delete)
+
+Sending request-line and headers:
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 204 No Content
+[hdr] Content-Length: 0
+Header Name: [content-length], Value: [0]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Running post_send hooks
+Request ends, status 204 class 2xx, error line:
+204 No Content
+Running destroy hooks.
+Request ends.
+******* Running test 8: delete_null ********
+Running pre_send hooks
+Sending request headers:
+DELETE /litmus/404me HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+X-Litmus: basic: 8 (delete_null)
+
+Sending request-line and headers:
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 404 Not Found
+[hdr] Content-Length: 69
+Header Name: [content-length], Value: [69]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Reading 69 bytes of response body.
+Got 69 bytes.
+Read block (69 bytes):
+[<html><title>404: Not Found</title><body>404: Not Found</body></html>]
+Running post_send hooks
+Request ends, status 404 class 4xx, error line:
+404 Not Found
+Running destroy hooks.
+Request ends.
+******* Running test 9: delete_fragment ********
+Running pre_send hooks
+Sending request headers:
+MKCOL /litmus/frag/ HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+X-Litmus: basic: 9 (delete_fragment)
+
+Sending request-line and headers:
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 201 Created
+[hdr] Content-Length: 0
+Header Name: [content-length], Value: [0]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Running post_send hooks
+Request ends, status 201 class 2xx, error line:
+201 Created
+Running destroy hooks.
+Request ends.
+Running pre_send hooks
+Sending request headers:
+DELETE /litmus/frag/#ment HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+X-Litmus: basic: 9 (delete_fragment)
+
+Sending request-line and headers:
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 204 No Content
+[hdr] Content-Length: 0
+Header Name: [content-length], Value: [0]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Running post_send hooks
+Request ends, status 204 class 2xx, error line:
+204 No Content
+Running destroy hooks.
+Request ends.
+******* Running test 10: mkcol ********
+Running pre_send hooks
+Sending request headers:
+MKCOL /litmus/coll/ HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+X-Litmus: basic: 10 (mkcol)
+
+Sending request-line and headers:
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 201 Created
+[hdr] Content-Length: 0
+Header Name: [content-length], Value: [0]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Running post_send hooks
+Request ends, status 201 class 2xx, error line:
+201 Created
+Running destroy hooks.
+Request ends.
+******* Running test 11: mkcol_again ********
+Running pre_send hooks
+Sending request headers:
+MKCOL /litmus/coll/ HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+X-Litmus: basic: 11 (mkcol_again)
+
+Sending request-line and headers:
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 405 Method Not Allowed
+[hdr] Content-Length: 87
+Header Name: [content-length], Value: [87]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Reading 87 bytes of response body.
+Got 87 bytes.
+Read block (87 bytes):
+[<html><title>405: Method Not Allowed</title><body>405: Method Not Allowed</body></html>]
+Running post_send hooks
+Request ends, status 405 class 4xx, error line:
+405 Method Not Allowed
+Running destroy hooks.
+Request ends.
+******* Running test 12: delete_coll ********
+Running pre_send hooks
+Sending request headers:
+DELETE /litmus/coll/ HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+X-Litmus: basic: 12 (delete_coll)
+
+Sending request-line and headers:
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 204 No Content
+[hdr] Content-Length: 0
+Header Name: [content-length], Value: [0]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Running post_send hooks
+Request ends, status 204 class 2xx, error line:
+204 No Content
+Running destroy hooks.
+Request ends.
+******* Running test 13: mkcol_no_parent ********
+Running pre_send hooks
+Sending request headers:
+MKCOL /litmus/409me/noparent/ HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+X-Litmus: basic: 13 (mkcol_no_parent)
+
+Sending request-line and headers:
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 409 Conflict
+[hdr] Content-Length: 67
+Header Name: [content-length], Value: [67]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Reading 67 bytes of response body.
+Got 67 bytes.
+Read block (67 bytes):
+[<html><title>409: Conflict</title><body>409: Conflict</body></html>]
+Running post_send hooks
+Request ends, status 409 class 4xx, error line:
+409 Conflict
+Running destroy hooks.
+Request ends.
+******* Running test 14: mkcol_with_body ********
+Running pre_send hooks
+Sending request headers:
+MKCOL /litmus/mkcolbody HTTP/1.1
+User-Agent: litmus/0.13 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: hank:8080
+Content-Type: xzy-foo/bar-512
+Content-Length: 8
+X-Litmus: basic: 14 (mkcol_with_body)
+
+Sending request-line and headers:
+Sending request body:
+Body block (8 bytes):
+[afafafaf]
+Request sent; retry is 1.
+[status-line] < HTTP/1.1 415 Unsupported Media Type
+[hdr] Content-Length: 95
+Header Name: [content-length], Value: [95]
+[hdr] Content-Type: text/html; charset=UTF-8
+Header Name: [content-type], Value: [text/html; charset=UTF-8]
+[hdr] Server: TornadoServer/2.1
+Header Name: [server], Value: [TornadoServer/2.1]
+[hdr] 
+End of headers.
+Running post_headers hooks
+Reading 95 bytes of response body.
+Got 95 bytes.
+Read block (95 bytes):
+[<html><title>415: Unsupported Media Type</title><body>415: Unsupported Media Type</body></html>]
+Running post_send hooks
+Request ends, status 415 class 4xx, error line:
+415 Unsupported Media Type
+Running destroy hooks.
+Request ends.
+******* Running test 15: finish ********
+sess: Destroying session.
+sess: Closing connection.
+sess: Connection closed.

@@ -129,6 +129,7 @@ class BasicHandler(web.RequestHandler):
     def options(self):
         self.set_header('Allow',  
             ",".join (["GET", "HEAD", "OPTIONS"]) )
+        self.add_header('DAV', DAV_VERSION)
         self.finish()
 
 
@@ -145,6 +146,7 @@ class RootHandler(BasicHandler):
     def options(self, name):
         self.set_header('Allow',  
             ",".join (["HEAD", "GET", "OPTIONS"]) )
+        self.add_header('DAV', DAV_VERSION)
         filename = os.path.abspath(os.path.join(self.application.directory, name)) 
         if not os.path.exists(filename):
             raise web.HTTPError(404) 
