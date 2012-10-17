@@ -30,6 +30,8 @@ class FileObject(DavObject):
     """
 
     def __init__(self, appliction, parent='', name=''):
+        parent = parent.encode('utf-8')
+        name = name.encode('utf-8')
         DavObject.__init__(self, appliction, parent, name)
         self.filename = os.path.abspath(
             os.path.join(self.root, self.parent, self.name))
