@@ -24,7 +24,7 @@ from lxml import etree
 from lxml.etree import _Element
 from functools import partial
 
-from davelement import *
+from element import *
 from lock import Supportedlock, LockDiscovery, Lockdb
 HTTP_OK = 200
 

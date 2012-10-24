@@ -18,7 +18,7 @@ import time
 from email.utils import formatdate
 from datetime import datetime
 
-from davelement import *
+from element import *
 from properties import Properties, DbAdapter
 from lock import LockDiscovery, EXCLUSIVE, SHARED
 

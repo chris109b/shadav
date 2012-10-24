@@ -29,7 +29,7 @@ import urllib
 
 from ifheader import if_header_evaluate
 from index import collection_index
-from dav.davelement import *
+from dav.element import *
 from dav.properties import DbAdapter, PropFindParser, PropPatchParser
 from dav.lock import Lockdb, LockDiscovery, LockParser, parse_timeout
 

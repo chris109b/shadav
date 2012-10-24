@@ -23,7 +23,7 @@ import mimetypes
 from datetime import datetime
 from email.utils import formatdate
 
-from dav.davobject import DavObject
+from dav.object import DavObject
 
 class FileObject(DavObject):
     """ Dav file object method implementation

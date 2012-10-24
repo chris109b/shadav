@@ -17,7 +17,7 @@ import re
 import time
 import hashlib
 from lxml import etree
-from davelement import *
+from element import *
 
 
 def get_current_time():    
