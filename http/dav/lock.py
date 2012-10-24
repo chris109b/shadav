@@ -216,8 +216,8 @@ class LockParser:
         self.lockscope = None
         self.locktype  = None
         self.owner     = None
-        childs = list (root)
-        for child in childs:
+        children = list (root)
+        for child in children:
             if child.tag=="{DAV:}lockscope":
                 if child[0].tag=="{DAV:}shared":
                     self.lockscope = SHARED

@@ -79,7 +79,7 @@ def collection_index( request, collection ):
         href.text = ".."
 
     # Table rows    
-    for obj in collection.childs():
+    for obj in collection.children():
         row = etree.SubElement(table_e, XHTML + "tr")
         col = etree.SubElement(row, XHTML + "td")
 

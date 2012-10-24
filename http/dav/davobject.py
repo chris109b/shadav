@@ -65,7 +65,7 @@ class DavObject(object):
     def is_exists(self):
         return self.exists
 
-    def childs(self):
+    def children(self):
         """ return a list of childs of this resource
         """
         return []

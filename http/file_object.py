@@ -78,10 +78,10 @@ class FileObject(DavObject):
             p = urllib.pathname2url(p)
         return p
                                   
-    def childs(self):
-        """ return a list of childs of this resource
+    def children(self):
+        """ return a list of children of this resource
         """
-        childs = []
+        children = []
         if self.collection:               
             for name in os.listdir(self.filename):
                 filename = os.path.join(self.root, self.parent , name)
@@ -93,8 +93,8 @@ class FileObject(DavObject):
                     obj = FileObject(self.application, 
                         parent = self.parent, 
                         name = name)
-                childs.append( obj )
-        return childs
+                children.append( obj )
+        return children 
 
     def mkcol(self):
         """ Dav mkcol method
